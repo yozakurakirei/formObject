@@ -1,0 +1,54 @@
+<%= form_with(model: @admin, url: admins_path, local: true) do |f| %>
+  <% if admin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
+
+      <ul>
+        <% admin.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2>会社を選択してください</h2>
+  <div class="field">
+    <%= f.label :会社名 %>
+    <%= f.collection_select(:name, @companies, :id, :name) %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :就業場所 %>
+    <%= f.text_field :place %>
+  </div>
+
+  <div class="field">
+    <%= f.label :備考 %>
+    <%= f.text_area :place_remark %>
+  </div>
+
+  <div class="field">
+    <%= f.label :開始日 %>
+    <%= f.date_select :start %>
+  </div>
+
+  <div class="field">
+    <%= f.label :終了日 %>
+    <%= f.date_select :finish %>
+  </div>
+
+  <div class="field">
+    <%= f.label :初日入店時間 %>
+    <%= f.time_select :time %>
+  </div>
+
+  <div class="field">
+    <%= f.label :給料 %>
+    <%= f.number_field :salary %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>

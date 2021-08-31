@@ -1,0 +1,51 @@
+<%= form_with(model: @book, url: books_path, local: true) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "個のエラー") %></h2>
+
+      <ul>
+        <% book.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price, "価格" %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :publish_date, "出版日" %>
+    <%= form.date_select :publish_date %>
+  </div>
+
+  <br>
+  
+  <h1>作者の情報</h1>
+
+  <div class="field">
+    <%= form.label :name, "作者名" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birth_place, "出身地" %>
+    <%= form.text_field :birth_place %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birth_date, "生年月日" %>
+    <%= form.text_field :birth_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

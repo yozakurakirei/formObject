@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>クライアント名</th>
+      <th>フリガナ</th>
+      <th>Place</th>
+      <th>Place remark</th>
+      <th>Start</th>
+      <th>Finish</th>
+      <th>Time</th>
+      <th>Salary</th>
+      <th>Company</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins.each do |admin| %>
+      <tr>
+        <td><%= admin.name %></td>
+        <td><%= admin.name_kana %></td>
+        <td><%= admin.place %></td>
+        <td><%= admin.place_remark %></td>
+        <td><%= admin.start %></td>
+        <td><%= admin.finish %></td>
+        <td><%= admin.time %></td>
+        <td><%= admin.salary %>円</td>
+        <td><%= link_to 'Show', admin %></td>
+        <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
+        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admin', new_admin_path %>
