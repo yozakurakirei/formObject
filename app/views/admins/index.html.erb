@@ -21,8 +21,8 @@
   <tbody>
     <% @admins.each do |admin| %>
       <tr>
-        <td><%= admin.name %></td>
-        <td><%= admin.name_kana %></td>
+        <td><%= admin.company.name %></td>
+        <td><%= admin.company.name_kana %></td>
         <td><%= admin.place %></td>
         <td><%= admin.place_remark %></td>
         <td><%= admin.start %></td>
@@ -31,7 +31,7 @@
         <td><%= admin.salary %>円</td>
         <td><%= link_to 'Show', admin %></td>
         <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
-        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', admin_path(admin), method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,3 +40,10 @@
 <br>
 
 <%= link_to 'New Admin', new_admin_path %>
+<br>
+
+<% @admins.each do |f| %>
+  <%= f.company.name %>
+<% end %>
+
+

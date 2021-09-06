@@ -13,8 +13,10 @@
 
   <h2>会社を選択してください</h2>
   <div class="field">
-    <%= f.label :会社名 %>
-    <%= f.collection_select(:name, @companies, :id, :name) %>
+    <% @companies.each do |c| %>
+    <%= f.label :company_id, "会社名" %>
+    <%= f.collection_select(:company_id, @companies, :id, :name, {}, { class:"select2" }) %>
+    <% end %>
   </div>
 
 

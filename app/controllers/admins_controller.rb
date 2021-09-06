@@ -3,15 +3,13 @@ class AdminsController < ApplicationController
 
   # GET /admins or /admins.json
   def index
-    @admins = Admin.all
-    @companies = Company.find_by(params[:id])
-    # @companies = Company.all
+    @admins = Admin.includes(:company, :staff).all
   end
 
   # GET /admins/1 or /admins/1.json
   def show
     @admin = Admin.find(params[:id])
-    @company = Company.all
+    # @company = Company.find(params[:id])
   end
 
   # GET /admins/new
@@ -52,11 +50,11 @@ class AdminsController < ApplicationController
 
   # DELETE /admins/1 or /admins/1.json
   def destroy
+    @admin = Admin.find(params[:id])
     @admin.destroy
-    respond_to do |format|
-      format.html { redirect_to admins_url, notice: "Admin was successfully destroyed." }
-      format.json { head :no_content }
-    end
+
+    redirect_to root_path
+    flash[:danger] = "削除されました"
   end
 
   private
